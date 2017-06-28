@@ -1,0 +1,22 @@
+    <form class="form-group">
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-1">
+                <select id="user-selector" class="btn-info form-control ">
+                    <option value="">Select User:</option>
+                </select>
+            </div>
+            <div class="col-sm-6 text text-center">
+                <input type="text" id='chirp-field' class="form-control text" placeholder="Update Status" ng-model="message">
+            </div>
+            <div class="col-xs-2">
+                <button id='chirp-btn' disabled class="btn btn-info btn-lg" type='submit' ng-click="postChirp()">Chirp!</button>
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <div class="container">
+        <h3 class="text-center">Your Top Chirps:</h3>
+        <div class="container tweet-area" id="chirp-list">
+        </div>
+    </div>
