@@ -1,6 +1,6 @@
 .jumbotron {
    text-align: center;
-   background-image: url("/feather.png");
+   background-image: url("/visuals/feather.png");
    background-size: cover;
 }
 
@@ -46,10 +46,14 @@ img {
     padding-left: 4px;
 }
 
-.delete-btn{
+.delete-btn {
     float: right;
 }
 
 button {
     cursor: pointer;
+}
+
+#btn-text {
+    color: white;
 }

@@ -1,15 +1,16 @@
-    <form class="form-group">
+    <form class="form-group" name="myform">
         <div class="row">
             <div class="col-sm-2 col-sm-offset-1">
-                <select id="user-selector" class="btn-info form-control ">
-                    <option value="">Select User:</option>
+                <select id="user-selector" class="btn-info form-control" ng-model="selectedUser" ng-required="true">
+                    <option value=''>Select User:</option>
+                    <option ng-repeat = "user in users" value="{{user.id}}"> {{user.name}} </option>
                 </select>
             </div>
             <div class="col-sm-6 text text-center">
-                <input type="text" id='chirp-field' class="form-control text" placeholder="Update Status" ng-model="message">
+                <input type="text" ng-model="messageToPost" ng-required="true" id='chirp-field' class="form-control text" placeholder="Update Status">
             </div>
             <div class="col-xs-2">
-                <button id='chirp-btn' disabled class="btn btn-info btn-lg" type='submit' ng-click="postChirp()">Chirp!</button>
+                <button id='chirp-btn' class="btn btn-info btn-lg" type='submit' ng-click="myform.$valid && createChirp()">Chirp!</button>
             </div>
         </div>
     </form>
@@ -17,6 +18,10 @@
 
     <div class="container">
         <h3 class="text-center">Your Top Chirps:</h3>
-        <div class="container tweet-area" id="chirp-list">
+        <div class="container tweet-area" id="chirp-list" ng-repeat="chirp in chirps">
+            <h1>{{ chirp.userName }}</h1>
+            <p>{{ chirp.message }}</p>
+            <h5>{{ chirp.timestamp | date: 'medium'}}</h5>
+            <button id='chirp-btn' class="btn btn-primary btn-xs view-btn" type='submit'><a ng-href="#!/chirps/{{ chirp.id }}"><i class="glyphicon glyphicon-zoom-in" aria-hidden="true"></i>VIEW</a></button>
         </div>
     </div>

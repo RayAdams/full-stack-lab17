@@ -1,7 +1,5 @@
-var app = angular.module('myApp', ['ngRoute']);
-
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('');
+angular.module('myApp', ['myApp.controllers', 'myApp.factories', 'ngRoute', 'ngResource'])
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/welcome.html',
@@ -9,21 +7,18 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         })
         .when('/chirps', {
             templateUrl: 'views/list.html',
-            controller: 'chirpList'
+            controller: 'ChirpListController'
         })
         .when('/chirps/:id', {
             templateUrl: 'views/single_view.html',
-            controller: 'singleChirp'
+            controller: 'SingleChirpController'
         })
         .when('/chirps/:id/update', {
             templateUrl: 'views/single_update.html',
-            controller: 'editChirp'
+            controller: 'UpdateChirpController'
         })
         .otherwise({
             redirectTo: '/'
         });
         
 }]);
-// .controller('welcomeLanding', ['$scope', function($scope) {
-//    //may add functionality to later
-// }])
